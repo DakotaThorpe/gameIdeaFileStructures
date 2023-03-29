@@ -26,7 +26,7 @@ struct fileData {
     int type;
     uint32_t size;
     char fname[32];
-    char data[size];
+    char data;
 };
 int main()
 {
@@ -36,7 +36,8 @@ int main()
         fprintf(stderr, "\nError opening file\n");
         exit(1);
     }
-    struct test write_struct = { 1, "Rohan", "test" };
+    struct test write_struct = { 1, "Rohan", "test", 1 };
+    struct fileData fdat = {0, 16, "test.bin", "1234567890abcdef"};
     struct test read_struct;
     // writing to file
     fwrite(&write_struct, sizeof(write_struct), 1,
