@@ -53,7 +53,10 @@ int main()
     for(int f=0; f<read_struct.textures; f++)
     {
         fread(&testRd, sizeof(testRd), 1, infile);
-        printf("File name:%s\n", testRd.fname);
+        char dat[testRd.size];
+        fseek( infile, SEEK_CUR, SEEK_SET );
+        fread(dat, sizeof(dat), 1, infile);
+        printf("File name:%s\nData: %s\n", testRd.fname, dat);
     }
     printf("Name: %s, Description: %s \nVersion: %d", read_struct.name,
            read_struct.description, read_struct.version);
