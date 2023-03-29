@@ -9,10 +9,10 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef uint8_t int;
-typedef uint16_t unsigned int;
-typedef uint32_t long;
-typedef uint64_t unsigned long;
+typedef int uint8_t;
+typedef unsigned int uint16_t;
+typedef long uint32_t;
+typedef unsigned long uint64_t;
 
 
 
