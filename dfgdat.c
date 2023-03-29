@@ -9,15 +9,25 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef uint8_t int;
+typedef uint16_t unsigned int;
+typedef uint32_t long;
+typedef uint64_t unsigned long;
+
+
+
 struct test {
     int version;
     char name[32];
     char description[32];
-    uint16_t textures;
-    uint32_t textureSizeFixed;
-    char
+    uint32_t textures;
 };
-
+struct fileData {
+    int type;
+    uint32_t size;
+    char fname[32];
+    char data[size];
+};
 int main()
 {
     FILE* infile;
