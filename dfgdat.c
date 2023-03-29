@@ -37,16 +37,24 @@ int main()
         exit(1);
     }
     struct test write_struct = { 1, "Rohan", "test", 1 };
-    struct fileData fdat = {0, 16, "test.bin", "1234567890abcdef"};
+    struct fileData fdat = {0, 16, "test.bin", (char)"1234567890abcdef"[16]};
     struct test read_struct;
+    struct fileData testRd;
     // writing to file
     fwrite(&write_struct, sizeof(write_struct), 1,
            infile);
-           
+    fwrite(&fdat, sizeof(fdat), 1,
+           infile);
+    
     rewind(infile);
     
     fread(&read_struct, sizeof(read_struct), 1, infile);
-  
+    
+    for(int f=0; f<read_struct.textures; f++)
+    {
+        fread(&testRd, sizeof(testRd), 1, infile);
+        printf("File name:%s\n", testRd.fname);
+    }
     printf("Name: %s, Description: %s \nVersion: %d", read_struct.name,
            read_struct.description, read_struct.version);
   
