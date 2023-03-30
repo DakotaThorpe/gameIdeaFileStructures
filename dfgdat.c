@@ -5,8 +5,13 @@ struct fileHeader {
     int fileCount;
     char description[64];
 };
+struct fileInfo {
+    int64_t size;
+    char name[64];
+};
 
 typedef struct fileHeader FileHeader;
+typedef struct fileInfo FileInfo;
 
 int main()
 {
@@ -16,6 +21,9 @@ int main()
     
     FileHeader fhead = {1, 1, "testing"};
     FileHeader frd; // Read File
+    FileInfo testFile = {16, "test.bin"};
+    char data[16];
+    sprintf(data, "Testing data");
     
     fwrite(&fhead, sizeof(fhead), 1, out);
     printf("Done saving file.\n\nReading...\n");
