@@ -6,7 +6,7 @@ struct fileHeader {
     char description[64];
 };
 struct fileInfo {
-    int64_t size;
+    int size;
     char name[64];
 };
 
@@ -22,10 +22,15 @@ int main()
     FileHeader fhead = {1, 1, "testing"};
     FileHeader frd; // Read File
     FileInfo testFile = {16, "test.bin"};
+    FileInfo finfoRead;
     char data[16];
     sprintf(data, "Testing data");
     
     fwrite(&fhead, sizeof(fhead), 1, out);
+    fwrite(&testFile, sizeof(testFile), 1, out);
+    fwrite(&data, sizeof(data), 1, out);
+    
+    
     printf("Done saving file.\n\nReading...\n");
     fseek(out, ftell(out)-16, SEEK_SET);
     printf("Cursor:%d\n", ftell(out));
